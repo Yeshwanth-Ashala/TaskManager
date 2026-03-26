@@ -14,17 +14,20 @@ const app = express();
 // --- CORS CONFIGURATION ---
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://taskmanager-web-nine.vercel.app',   // Ensure this matches your Vercel URL exactly
-  'https://taskmanager-web-nine.vercel.app/'  // Including version with trailing slash
+  'https://taskmanager-app-nine.vercel.app',    // Changed 'web' to 'app'
+  'https://taskmanager-app-nine.vercel.app/'    // Changed 'web' to 'app'
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
+
+    // Check if the origin is in our allowed list
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log("Blocked by CORS. Origin was:", origin); // Helps you debug in Render logs
       callback(new Error('Not allowed by CORS'));
     }
   },
