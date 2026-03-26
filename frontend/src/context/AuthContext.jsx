@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   // 3. UPDATE THIS REGISTER FUNCTION
   const register = async (name, email, password) => {
     // Notice the backticks (`) and the ${API_URL}
-    const res = await axios.post(`${API_URL}/api/auth/register`, { name, email, password });
+    const res = await axios.post(`https://taskmanager-app-2uke.onrender.com/api/auth/register`, { name, email, password });
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', JSON.stringify(res.data));
     setToken(res.data.token);
