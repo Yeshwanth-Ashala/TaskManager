@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const AuthContext = createContext();
 
-// --- ADD THIS LINE AT THE TOP ---
+// 1. PLACE THIS AT THE VERY TOP (After the imports)
 const API_URL = import.meta.env.VITE_API_URL || "https://taskmanager-app-2uke.onrender.com";
 
 export const AuthProvider = ({ children }) => {
@@ -19,8 +19,9 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, [token]);
 
+  // 2. UPDATE THIS LOGIN FUNCTION
   const login = async (email, password) => {
-    // UPDATED: Added ${API_URL} to the front
+    // Notice the backticks (`) and the ${API_URL}
     const res = await axios.post(`${API_URL}/api/auth/login`, { email, password });
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', JSON.stringify(res.data));
@@ -28,8 +29,9 @@ export const AuthProvider = ({ children }) => {
     setUser(res.data);
   };
 
+  // 3. UPDATE THIS REGISTER FUNCTION
   const register = async (name, email, password) => {
-    // UPDATED: Added ${API_URL} to the front
+    // Notice the backticks (`) and the ${API_URL}
     const res = await axios.post(`${API_URL}/api/auth/register`, { name, email, password });
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', JSON.stringify(res.data));
