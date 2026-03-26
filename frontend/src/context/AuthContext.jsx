@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   // 2. UPDATE THIS LOGIN FUNCTION
   const login = async (email, password) => {
     // Notice the backticks (`) and the ${API_URL}
-    const res = await axios.post(`${API_URL}/api/auth/login`, { email, password });
+    const res = await axios.post(`https://taskmanager-app-2uke.onrender.com/api/auth/login`, { email, password });
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', JSON.stringify(res.data));
     setToken(res.data.token);
