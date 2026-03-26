@@ -4,7 +4,7 @@ import axios from 'axios';
 export const AuthContext = createContext();
 
 // 1. PLACE THIS AT THE VERY TOP (After the imports)
-const API_URL = import.meta.env.VITE_API_URL || "https://taskmanager-app-2uke.onrender.com";
+const API_URL = "https://taskmanager-app-2uke.onrender.com";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
